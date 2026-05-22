@@ -24,12 +24,12 @@ interface Service {
 export class AboutComponent {
   teamMembers: TeamMember[] = [
     {
-      name: 'Fabián',
-      role: 'Co-fundador & Director Creativo'
+      name: 'Braian',
+      role: '  Co-fundador & Director de Operaciones'
     },
     {
-      name: 'Braian',
-      role: 'Co-fundador & Director de Operaciones'
+      name: 'Fabián',
+      role: 'Co-fundador & Director Creativo'
     }
   ];
 
@@ -67,5 +67,5 @@ export class AboutComponent {
   ];
 
   currentYear = new Date().getFullYear();
-  yearsOfExperience = this.currentYear - 2009; // Ajusta el año de inicio según corresponda
+  yearsOfExperience = 12; // 12 años de experiencia
 }
