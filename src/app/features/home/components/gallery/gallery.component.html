@@ -1,0 +1,67 @@
+<section id="galeria" class="gallery-section">
+  <div class="gallery-container">
+    <div class="section-header scroll-reveal">
+      <h2 class="section-title">Últimos eventos</h2>
+      <p class="section-description">
+        Descubrí las celebraciones más recientes que organizamos con amor y dedicación.
+      </p>
+    </div>
+
+    <div class="carousel-3d-wrapper"
+         (mousedown)="onMouseDown($event)"
+         (mousemove)="onMouseMove($event)"
+         (mouseup)="onMouseUp()"
+         (mouseleave)="onMouseUp()">
+      <div class="carousel-3d-container" [style.transform]="'rotateY(' + rotation + 'deg)'">
+        <div 
+          *ngFor="let item of galleryItems; let i = index" 
+          class="carousel-3d-item"
+          [style.transform]="getItemTransform(i)"
+          (click)="openLightbox(i)"
+        >
+          <div class="item-content">
+            <img [src]="item.image" [alt]="item.title" class="gallery-image" loading="lazy">
+            <div class="item-overlay">
+              <span class="item-category">{{ item.category }}</span>
+              <h3 class="item-title">{{ item.title }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="carousel-hint">
+        <p>Arrastra para rotar</p>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" *ngIf="lightboxOpen" (click)="closeLightbox()">
+      <button class="lightbox-close" (click)="closeLightbox()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <button class="lightbox-nav lightbox-prev" (click)="previousImage($event)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="lightbox-nav lightbox-next" (click)="nextImage($event)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+      <div class="lightbox-content" (click)="$event.stopPropagation()">
+        <div class="lightbox-image">
+          <img [src]="galleryItems[currentImageIndex]?.image" [alt]="galleryItems[currentImageIndex]?.title" loading="lazy">
+        </div>
+        <div class="lightbox-info">
+          <span class="lightbox-category">{{ galleryItems[currentImageIndex]?.category }}</span>
+          <h3 class="lightbox-title">{{ galleryItems[currentImageIndex]?.title }}</h3>
+          <p class="lightbox-counter">{{ currentImageIndex + 1 }} / {{ galleryItems.length }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

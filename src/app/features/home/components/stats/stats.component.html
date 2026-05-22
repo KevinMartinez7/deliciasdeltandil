@@ -1,0 +1,11 @@
+<section class="stats-section">
+  <div class="stats-container">
+    <p class="stats-intro">Miles de familias ya confiaron en nosotros para hacer sus eventos inolvidables</p>
+    <div class="stats-grid">
+      <div *ngFor="let stat of stats; let i = index" class="stat-item scroll-reveal" [style.animation-delay]="(i * 0.1) + 's'">
+        <div class="stat-value">{{ stat.value }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+  </div>
+</section>

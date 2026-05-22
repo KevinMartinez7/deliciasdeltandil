@@ -1,0 +1,183 @@
+<div class="contact-page">
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">Contáctanos</h1>
+      <p class="page-subtitle">
+        Estamos listos para hacer realidad tu evento soñado
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper">
+          <h2 class="form-title">Solicita tu cotización</h2>
+          <p class="form-subtitle">
+            Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.
+          </p>
+
+          <div *ngIf="successMessage" class="success-message">
+            ✓ ¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.
+          </div>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+            <div class="form-group">
+              <label for="name">Nombre completo *</label>
+              <input 
+                type="text" 
+                id="name" 
+                formControlName="name"
+                class="form-control"
+                [class.error]="submitted && f['name'].errors"
+                placeholder="Tu nombre"
+              >
+              <span *ngIf="submitted && f['name'].errors" class="error-message">
+                El nombre es requerido
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input 
+                type="email" 
+                id="email" 
+                formControlName="email"
+                class="form-control"
+                [class.error]="submitted && f['email'].errors"
+                placeholder="tu@email.com"
+              >
+              <span *ngIf="submitted && f['email'].errors" class="error-message">
+                Ingresa un email válido
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Teléfono *</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                formControlName="phone"
+                class="form-control"
+                [class.error]="submitted && f['phone'].errors"
+                placeholder="+54 9 11 1234-5678"
+              >
+              <span *ngIf="submitted && f['phone'].errors" class="error-message">
+                El teléfono es requerido
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label for="eventType">Tipo de evento *</label>
+              <select 
+                id="eventType" 
+                formControlName="eventType"
+                class="form-control"
+                [class.error]="submitted && f['eventType'].errors"
+              >
+                <option value="">Selecciona un tipo</option>
+                <option value="boda">Boda</option>
+                <option value="cumpleanos">Cumpleaños</option>
+                <option value="fiesta">Fiesta Privada</option>
+                <option value="aniversario">Aniversario</option>
+                <option value="otro">Otro</option>
+              </select>
+              <span *ngIf="submitted && f['eventType'].errors" class="error-message">
+                Selecciona un tipo de evento
+              </span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="eventDate">Fecha del evento</label>
+                <input 
+                  type="date" 
+                  id="eventDate" 
+                  formControlName="eventDate"
+                  class="form-control"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="guestCount">Cantidad de invitados</label>
+                <input 
+                  type="number" 
+                  id="guestCount" 
+                  formControlName="guestCount"
+                  class="form-control"
+                  placeholder="Ej: 100"
+                  min="1"
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Mensaje *</label>
+              <textarea 
+                id="message" 
+                formControlName="message"
+                class="form-control"
+                [class.error]="submitted && f['message'].errors"
+                rows="5"
+                placeholder="Cuéntanos más sobre tu evento..."
+              ></textarea>
+              <span *ngIf="submitted && f['message'].errors" class="error-message">
+                El mensaje debe tener al menos 10 caracteres
+              </span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large">
+              Enviar Solicitud
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h3 class="info-title">Información de contacto</h3>
+          
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-content">
+              <h4>Teléfono</h4>
+              <a href="tel:+5491112345678">+54 9 11 1234-5678</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📧</div>
+            <div class="info-content">
+              <h4>Email</h4>
+              <a href="mailto:contacto@deliciasdeltandil.com">contacto&#64;deliciasdeltandil.com</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <h4>Ubicación</h4>
+              <p>Tandil, Buenos Aires<br>Argentina</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">⏰</div>
+            <div class="info-content">
+              <h4>Horario de atención</h4>
+              <p>Lunes a Viernes: 9:00 - 18:00<br>Sábados: 10:00 - 14:00</p>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#" class="social-link">Facebook</a>
+            <a href="#" class="social-link">Instagram</a>
+            <a href="#" class="social-link">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,69 @@
+<section id="servicios" class="services-carousel-section">
+  <div class="services-carousel-container">
+    <div class="carousel-header scroll-reveal">
+      <h2 class="carousel-main-title">Servicios para cada ocasión</h2>
+      <p class="carousel-main-description">
+        Te mereces un servicio de catering que haga tu celebración perfecta.
+      </p>
+    </div>
+
+    <div 
+      class="services-carousel-wrapper"
+      (mouseenter)="showNavigation = true"
+      (mouseleave)="showNavigation = false"
+    >
+      <div class="services-carousel-track">
+        <div 
+          *ngFor="let service of services; let i = index" 
+          class="service-slide"
+          [class.active]="i === currentServiceIndex"
+        >
+          <div class="service-slide-background">
+            <img [src]="service.backgroundImage" [alt]="service.title" loading="lazy">
+            <div class="service-overlay"></div>
+          </div>
+          <div class="service-slide-content">
+            <span class="service-category">{{ service.category }}</span>
+            <h3 class="service-slide-title">{{ service.title }}</h3>
+            <p class="service-slide-description">{{ service.description }}</p>
+            <a [routerLink]="service.link" class="service-slide-link">
+              <span>Ver más</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button 
+        class="carousel-nav-button carousel-nav-prev"
+        [class.visible]="showNavigation"
+        (click)="prevService()"
+      >
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+
+      <button 
+        class="carousel-nav-button carousel-nav-next"
+        [class.visible]="showNavigation"
+        (click)="nextService()"
+      >
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="services-carousel-dots">
+      <button 
+        *ngFor="let service of services; let i = index"
+        class="carousel-dot-indicator"
+        [class.active]="i === currentServiceIndex"
+        (click)="goToService(i)"
+      ></button>
+    </div>
+  </div>
+</section>

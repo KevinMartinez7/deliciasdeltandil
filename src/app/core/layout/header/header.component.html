@@ -1,0 +1,90 @@
+<header class="header" [class.scrolled]="isScrolled()">
+  <div class="container">
+    <nav class="navbar">
+      <!-- Logo -->
+      <a routerLink="/" class="logo" (click)="closeMobileMenu()">
+        <img src="/assets/images/logo/Logo-delicias-1.png" alt="Delicias del Tandil" class="logo-image">
+        <span class="logo-text">Delicias del Tandil</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+            Inicio
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/servicios" routerLinkActive="active" class="nav-link">
+            Servicios
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#nosotros" class="nav-link">
+            Nosotros
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#galeria" class="nav-link">
+            Galería
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/contacto" routerLinkActive="active" class="nav-link">
+            Contacto
+          </a>
+        </li>
+      </ul>
+
+      <!-- CTA Button -->
+      <div class="nav-actions">
+        <a routerLink="/contacto" class="btn btn-primary">Consultar Cotización</a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" [attr.aria-expanded]="isMobileMenuOpen()" aria-label="Toggle menu">
+        <span class="hamburger" [class.active]="isMobileMenuOpen()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-menu" [class.open]="isMobileMenuOpen()">
+      <ul class="mobile-nav-menu">
+        <li class="mobile-nav-item">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mobile-nav-link" (click)="closeMobileMenu()">
+            Inicio
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a routerLink="/servicios" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
+            Servicios
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#nosotros" class="mobile-nav-link" (click)="closeMobileMenu()">
+            Nosotros
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#galeria" class="mobile-nav-link" (click)="closeMobileMenu()">
+            Galería
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a routerLink="/contacto" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
+            Contacto
+          </a>
+        </li>
+        <li class="mobile-nav-item">
+          <a routerLink="/contacto" class="btn btn-primary" (click)="closeMobileMenu()">
+            Consultar Cotización
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

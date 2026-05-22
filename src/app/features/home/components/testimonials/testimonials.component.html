@@ -1,0 +1,24 @@
+<section id="testimonios" class="testimonials-section">
+  <div class="testimonials-container">
+    <div class="section-header scroll-reveal">
+      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div 
+        *ngFor="let testimonial of testimonials; let i = index" 
+        class="testimonial-card scroll-reveal" 
+        [style.animation-delay]="(i * 0.1) + 's'"
+      >
+        <div class="testimonial-rating">
+          <span *ngFor="let star of [1,2,3,4,5]" class="star">★</span>
+        </div>
+        <p class="testimonial-content">"{{ testimonial.content }}"</p>
+        <div class="testimonial-author">
+          <div class="author-name">{{ testimonial.name }}</div>
+          <div class="author-role">{{ testimonial.company }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

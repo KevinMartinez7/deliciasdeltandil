@@ -1,0 +1,28 @@
+<section id="caracteristicas" class="features-section">
+  <div class="features-container">
+    <div class="section-header scroll-reveal">
+      <h2 class="section-title">Todo para tu evento perfecto</h2>
+      <p class="section-description">
+        Servicio y atención personalizada que hacen posible cualquier celebración.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div 
+        *ngFor="let feature of features; let i = index" 
+        class="feature-card scroll-reveal"
+        [class.dark]="i % 2 === 0"
+        [class.gold]="i % 2 !== 0"
+        [attr.data-index]="i"
+        [style.animation-delay]="(i * 0.06) + 's'"
+        (mouseenter)="onCardHover(i)"
+        (mouseleave)="onCardLeave()"
+      >
+        <div class="card-content">
+          <h3 class="card-title">{{ feature.title }}</h3>
+          <p class="card-description">{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

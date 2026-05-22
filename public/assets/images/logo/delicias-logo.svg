@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0E1BD;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D6A350;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0E1BD;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer gold ring -->
+  <circle cx="200" cy="200" r="195" fill="none" stroke="url(#goldGradient)" stroke-width="3" filter="url(#glow)"/>
+  
+  <!-- Inner gold ring -->
+  <circle cx="200" cy="200" r="185" fill="none" stroke="url(#goldGradient)" stroke-width="2"/>
+  
+  <!-- Black circle background -->
+  <circle cx="200" cy="200" r="178" fill="#000000"/>
+  
+  <!-- Gold decorative wave at bottom -->
+  <path d="M 100 280 Q 150 270, 200 280 T 300 280" fill="none" stroke="#D6A350" stroke-width="2" opacity="0.6"/>
+  <path d="M 100 285 Q 150 275, 200 285 T 300 285" fill="none" stroke="#D6A350" stroke-width="1.5" opacity="0.4"/>
+  
+  <!-- Text: "Delicias" in script style -->
+  <text x="200" y="160" font-family="'Brush Script MT', cursive, serif" font-size="72" fill="#FFFFFF" text-anchor="middle" font-style="italic" filter="url(#glow)">
+    Delicias
+  </text>
+  
+  <!-- Text: "DEL TANDIL" -->
+  <text x="200" y="200" font-family="'Times New Roman', serif" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" letter-spacing="4">
+    DEL TANDIL
+  </text>
+  
+  <!-- Text: "EVENTOS" -->
+  <text x="200" y="235" font-family="'Times New Roman', serif" font-size="32" fill="#FFFFFF" text-anchor="middle" font-weight="300" letter-spacing="8">
+    EVENTOS
+  </text>
+</svg>

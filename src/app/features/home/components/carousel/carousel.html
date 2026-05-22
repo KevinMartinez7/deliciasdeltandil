@@ -1,0 +1,44 @@
+<section class="carousel-section">
+  <div class="carousel-container">
+    <button class="carousel-nav carousel-nav-prev" (click)="prev(); stopAutoplay()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+
+    <div class="carousel-track-container">
+      <div class="carousel-track" [style.transform]="getTransform()">
+        <div 
+          *ngFor="let item of items" 
+          class="carousel-item"
+          [style.width.%]="100 / itemsPerView"
+        >
+          <div class="carousel-card">
+            <div class="carousel-image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy">
+            </div>
+            <div class="carousel-content">
+              <span class="carousel-category">{{ item.category }}</span>
+              <h3 class="carousel-title">{{ item.title }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-nav carousel-nav-next" (click)="next(); stopAutoplay()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="carousel-dots">
+    <button 
+      *ngFor="let item of items; let i = index"
+      class="carousel-dot"
+      [class.active]="i === currentIndex"
+      (click)="currentIndex = i; stopAutoplay(); apply3DEffect()"
+    ></button>
+  </div>
+</section>

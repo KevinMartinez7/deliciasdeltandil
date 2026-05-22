@@ -1,0 +1,79 @@
+<div class="services-page">
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">Nuestros Servicios</h1>
+      <p class="page-subtitle">
+        Organización integral de eventos con todo lo que necesitás
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Services Detail -->
+  <section class="services-detail section">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="intro-title">Eventos Completos</h2>
+        <p class="intro-description">
+          Organizamos tu evento de principio a fin, incluyendo catering gourmet, 
+          decoración, logística y coordinación total
+        </p>
+      </div>
+
+      <div *ngFor="let service of mainServices; let i = index" class="service-detail" [class.reverse]="i % 2 !== 0">
+        <div class="service-content">
+          <div class="service-icon-large">{{ service.icon }}</div>
+          <h2 class="service-title">{{ service.title }}</h2>
+          <h3 class="service-subtitle">{{ service.subtitle }}</h3>
+          <p class="service-description">{{ service.description }}</p>
+          
+          <ul class="feature-list">
+            <li *ngFor="let feature of service.features" class="feature-item">
+              <span class="check-icon">✓</span>
+              <span>{{ feature }}</span>
+            </li>
+          </ul>
+
+          <a routerLink="/contacto" class="btn btn-primary">Solicitar Cotización</a>
+        </div>
+        <div class="service-image">
+          <div class="image-placeholder"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complementary Services -->
+  <section class="complementary-services section">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="intro-title">Servicios Complementarios</h2>
+        <p class="intro-description">
+          Todos los elementos necesarios para hacer de tu evento una experiencia perfecta
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div 
+          *ngFor="let service of complementaryServices; let i = index" 
+          class="complementary-card"
+          [attr.data-category]="service.category"
+        >
+          <div class="card-icon">{{ service.icon }}</div>
+          <div class="card-badge">{{ service.category }}</div>
+          <h3 class="card-title">{{ service.title }}</h3>
+          <p class="card-description">{{ service.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">¿Listo para comenzar?</h2>
+      <p class="cta-text">Contáctanos hoy y recibe una cotización personalizada para tu evento</p>
+      <a routerLink="/contacto" class="btn btn-primary btn-large">Contactar Ahora</a>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D6A350;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0E1BD;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="#101010" stroke="url(#goldGradient)" stroke-width="3"/>
+  <text x="100" y="85" font-family="'Brush Script MT', cursive" font-size="48" fill="#FFFFFF" text-anchor="middle" style="font-style: italic;">Delicias</text>
+  <text x="100" y="115" font-family="'Arial', sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">DEL TANDIL</text>
+  <text x="100" y="135" font-family="'Arial', sans-serif" font-size="12" fill="#F5F1E1" text-anchor="middle" letter-spacing="3">EVENTOS</text>
+</svg>

@@ -1,0 +1,110 @@
+<section id="nosotros" class="about-section">
+  <div class="about-container">
+    <!-- Story Section -->
+    <div class="about-story scroll-reveal">
+      <div class="story-content">
+        <span class="section-label">Nuestra Historia</span>
+        <h2 class="section-title">Transformamos sueños en realidad</h2>
+        <div class="story-text">
+          <p class="lead-paragraph">
+            Lo que comenzó como una pasión por crear momentos inolvidables, se convirtió en 
+            <strong>Delicias del Tandil</strong>, una empresa integral de eventos que redefine 
+            el concepto de celebración perfecta.
+          </p>
+          <p>
+            <strong>Fabián y Braian</strong>, fundadores de la compañía, compartían una visión clara: 
+            no se trata solo de servir comida o decorar un espacio, sino de crear experiencias 
+            completas que permanezcan en la memoria de cada invitado. Con más de 
+            <strong>{{ yearsOfExperience }} años de experiencia</strong>, han llevado esta visión 
+            a más de 2,500 eventos exitosos.
+          </p>
+          <p>
+            Desde bodas íntimas hasta grandes celebraciones familiares, cada evento es una oportunidad 
+            para demostrar que cuando la creatividad, la dedicación y el servicio excepcional se unen, 
+            los resultados son extraordinarios.
+          </p>
+        </div>
+      </div>
+      
+      <div class="story-visual">
+        <div class="visual-card card-1">
+          <div class="card-content">
+            <div class="stat-number">{{ yearsOfExperience }}+</div>
+            <div class="stat-label">Años de experiencia</div>
+          </div>
+        </div>
+        <div class="visual-card card-2">
+          <div class="card-content">
+            <div class="stat-number">2.5K+</div>
+            <div class="stat-label">Eventos realizados</div>
+          </div>
+        </div>
+        <div class="visual-card card-3">
+          <div class="card-content">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Invitados felices</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="about-mission scroll-reveal">
+      <div class="mission-content">
+        <h3 class="mission-title">Organización integral de eventos</h3>
+        <p class="mission-description">
+          En Delicias del Tandil somos mucho más que catering. Ofrecemos un servicio completo 
+          que incluye salones, decoración, entelado, sonido, iluminación, barra de tragos, 
+          logística, transporte, alojamiento y coordinación total. Todo lo que necesitás para 
+          tu evento, en un solo lugar.
+        </p>
+      </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="about-services">
+      <div 
+        *ngFor="let service of services; let i = index" 
+        class="service-card scroll-reveal"
+        [style.animation-delay]="(i * 0.08) + 's'"
+      >
+        <div class="service-icon">{{ service.icon }}</div>
+        <h4 class="service-title">{{ service.title }}</h4>
+        <p class="service-description">{{ service.description }}</p>
+      </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="about-team scroll-reveal">
+      <h3 class="team-title">Liderados por la pasión</h3>
+      <p class="team-subtitle">
+        Nuestros fundadores combinan creatividad, experiencia y dedicación para 
+        hacer de cada evento una experiencia única
+      </p>
+      
+      <div class="team-grid">
+        <div 
+          *ngFor="let member of teamMembers" 
+          class="team-member"
+        >
+          <div class="member-avatar">
+            <span class="avatar-initial">{{ member.name.charAt(0) }}</span>
+          </div>
+          <h4 class="member-name">{{ member.name }}</h4>
+          <p class="member-role">{{ member.role }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="about-cta scroll-reveal">
+      <h3 class="cta-title">¿Listo para crear algo extraordinario?</h3>
+      <p class="cta-description">
+        Conversemos sobre tu próximo evento y descubrí cómo podemos hacerlo inolvidable
+      </p>
+      <a routerLink="/contacto" class="btn-about-primary">
+        Solicitar Cotización
+      </a>
+    </div>
+  </div>
+</section>
