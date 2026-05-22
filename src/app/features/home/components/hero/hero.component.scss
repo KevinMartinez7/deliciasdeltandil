@@ -28,6 +28,11 @@
   height: auto;
   transform: translate(-50%, -50%);
   object-fit: cover;
+  filter: brightness(0.85);
+  
+  @media (max-width: 768px) {
+    filter: brightness(0.7);
+  }
 }
 
 .hero-fallback {
@@ -36,14 +41,19 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #F5F1E1 0%, #F0E1BD 50%, #D6A350 100%);
+  background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 50%, #3A3A3A 100%);
   z-index: -1;
 }
 
 .video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
   z-index: 1;
 }
 
@@ -61,15 +71,32 @@
   text-align: center;
   max-width: 1000px;
   margin: 0 auto;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-title {
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 400;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700;
   line-height: 1.1;
   margin-bottom: 0;
   color: white;
   letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  
+  @media (max-width: 768px) {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
 }
 
 .hero-cta {
@@ -86,19 +113,47 @@
   justify-content: center;
   padding: 1.25rem 3rem;
   font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   text-decoration: none;
-  background: white;
-  color: #101010;
+  background: linear-gradient(135deg, #D6A350 0%, #E4B969 100%);
+  color: white;
   border: none;
-  transition: all 0.3s ease;
-}
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(214, 163, 80, 0.4);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(214, 163, 80, 0.6);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
 
-.btn-hero-primary:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-2px);
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 0.8125rem;
+  }
 }
 
 .hero-cta-text {
