@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ContactService } from '../../shared/services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -13,8 +14,13 @@ export class ContactComponent {
   contactForm: FormGroup;
   submitted = false;
   successMessage = false;
+  errorMessage = false;
+  isLoading = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private contactService: ContactService
+  ) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -32,21 +38,37 @@ export class ContactComponent {
 
   onSubmit() {
     this.submitted = true;
+    this.errorMessage = false;
+    this.successMessage = false;
 
     if (this.contactForm.invalid) {
       return;
     }
 
-    // Aquí iría la lógica para enviar el formulario
-    console.log('Form submitted:', this.contactForm.value);
-    
-    // Simular envío exitoso
-    this.successMessage = true;
-    this.contactForm.reset();
-    this.submitted = false;
+    this.isLoading = true;
 
-    setTimeout(() => {
-      this.successMessage = false;
-    }, 5000);
+    // Enviar formulario a través del servicio
+    this.contactService.sendContactForm(this.contactForm.value).subscribe({
+      next: (response) => {
+        console.log('Email enviado exitosamente:', response);
+        this.successMessage = true;
+        this.contactForm.reset();
+        this.submitted = false;
+        this.isLoading = false;
+
+        setTimeout(() => {
+          this.successMessage = false;
+        }, 5000);
+      },
+      error: (error) => {
+        console.error('Error al enviar email:', error);
+        this.errorMessage = true;
+        this.isLoading = false;
+
+        setTimeout(() => {
+          this.errorMessage = false;
+        }, 5000);
+      }
+    });
   }
 }
