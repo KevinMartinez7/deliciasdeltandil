@@ -2,6 +2,12 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist/delicias-del-tandil/browser",
   "framework": "angular",
+  "functions": {
+    "api/contact.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",

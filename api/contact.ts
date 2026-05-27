@@ -1,14 +1,38 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env['RESEND_API_KEY']);
-
 export default async function handler(req: any, res: any) {
+  // Configurar CORS
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  // Manejar preflight
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
   // Solo permitir POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Método no permitido' });
   }
 
   try {
+    // Verificar que la API key existe
+    const apiKey = process.env['RESEND_API_KEY'];
+    if (!apiKey) {
+      console.error('RESEND_API_KEY no está configurada');
+      return res.status(500).json({ 
+        message: 'Error de configuración del servidor',
+        error: 'API key no configurada'
+      });
+    }
+
+    const resend = new Resend(apiKey);
     const { name, email, phone, eventType, eventDate, guestCount, message } = req.body;
 
     // Validación básica
@@ -425,18 +449,26 @@ export default async function handler(req: any, res: any) {
       replyTo: email, // Permite responder directamente al cliente
     });
 
-    console.log('Email enviado:', data);
+    console.log('Email enviado exitosamente:', data);
 
     return res.status(200).json({ 
       message: 'Mensaje enviado exitosamente',
-      success: true 
+      success: true,
+      data: data
     });
 
   } catch (error: any) {
-    console.error('Error al enviar email:', error);
+    console.error('Error detallado:', {
+      message: error.message,
+      statusCode: error.statusCode,
+      name: error.name,
+      stack: error.stack
+    });
+    
     return res.status(500).json({ 
       message: 'Error al enviar el mensaje',
-      error: error.message 
+      error: error.message,
+      details: error.statusCode ? `Status: ${error.statusCode}` : undefined
     });
   }
 }
