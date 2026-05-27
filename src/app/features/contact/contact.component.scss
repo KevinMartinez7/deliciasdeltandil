@@ -91,6 +91,7 @@
     border-radius: var(--radius-md);
     transition: all var(--transition-fast);
     font-family: inherit;
+    background: white;
 
     &:focus {
       outline: none;
@@ -104,6 +105,49 @@
 
     &::placeholder {
       color: #999;
+    }
+
+    // Estilos para el datepicker
+    &[type="date"] {
+      position: relative;
+      color: var(--text-primary);
+      
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: 0.6;
+        transition: all var(--transition-fast);
+        filter: invert(52%) sepia(73%) saturate(480%) hue-rotate(358deg) brightness(95%) contrast(86%);
+        width: 20px;
+        height: 20px;
+      }
+
+      &:hover::-webkit-calendar-picker-indicator {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      &:focus::-webkit-calendar-picker-indicator {
+        filter: invert(52%) sepia(73%) saturate(680%) hue-rotate(358deg) brightness(95%) contrast(86%);
+      }
+
+      // Para Firefox
+      &::-moz-calendar-picker-indicator {
+        cursor: pointer;
+      }
+    }
+
+    // Estilos para el input de número
+    &[type="number"] {
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        opacity: 0.6;
+        cursor: pointer;
+      }
+
+      &:hover::-webkit-inner-spin-button,
+      &:hover::-webkit-outer-spin-button {
+        opacity: 1;
+      }
     }
   }
 

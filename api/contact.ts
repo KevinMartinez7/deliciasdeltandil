@@ -49,7 +49,7 @@ export default async function handler(req: any, res: any) {
 
     // Enviar email usando Resend
     const data = await resend.emails.send({
-      from: 'Contacto Web <onboarding@resend.dev>', // Cambiar cuando tengas dominio verificado
+      from: 'Contacto Web <onboarding@resend.dev>',
       to: ['deliciasdeltandileventos2@gmail.com'],
       subject: `🎉 Nueva consulta de ${eventType} - ${name}`,
       html: `
