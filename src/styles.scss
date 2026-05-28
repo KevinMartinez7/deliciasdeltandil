@@ -557,7 +557,8 @@ input.flatpickr-input[readonly] {
 
 /* Input del año */
 .numInputWrapper {
-  width: 70px !important;
+  width: auto !important;
+  min-width: 90px !important;
   
   input.numInput {
     background: white !important;
@@ -565,9 +566,12 @@ input.flatpickr-input[readonly] {
     border: 2px solid rgba(255, 255, 255, 0.9) !important;
     border-radius: 6px !important;
     font-weight: 700 !important;
-    padding: 0.4rem 0.5rem !important;
+    padding: 0.4rem 1.8rem 0.4rem 0.8rem !important;
     font-size: 1rem !important;
-    text-align: center !important;
+    text-align: left !important;
+    width: auto !important;
+    min-width: 90px !important;
+    box-sizing: border-box !important;
     
     &:hover {
       background: rgba(255, 255, 255, 0.95) !important;
