@@ -81,6 +81,34 @@
       margin-bottom: 0.5rem;
       color: var(--text-primary);
     }
+
+    // Wrapper para input con ícono
+    .input-with-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .form-control {
+        padding-right: 3rem;
+      }
+
+      .input-icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #D6A350;
+        pointer-events: none;
+        transition: all var(--transition-fast);
+        width: 20px;
+        height: 20px;
+      }
+
+      &:hover .input-icon {
+        color: #C59340;
+        transform: translateY(-50%) scale(1.1);
+      }
+    }
   }
 
   .form-control {
@@ -107,36 +135,24 @@
       color: #999;
     }
 
-    // Estilos para el datepicker
-    &[type="date"] {
-      position: relative;
-      color: var(--text-primary);
+    // Input del datepicker - estilo simple con cursor pointer
+    &#eventDate,
+    &.flatpickr-input {
+      cursor: pointer;
+      background: white;
       
+      &:hover {
+        border-color: #D6A350;
+        background-color: rgba(214, 163, 80, 0.02);
+      }
+      
+      // Ocultar el ícono nativo del navegador en el input de calendario
       &::-webkit-calendar-picker-indicator {
-        cursor: pointer;
-        opacity: 0.6;
-        transition: all var(--transition-fast);
-        filter: invert(52%) sepia(73%) saturate(480%) hue-rotate(358deg) brightness(95%) contrast(86%);
-        width: 20px;
-        height: 20px;
-      }
-
-      &:hover::-webkit-calendar-picker-indicator {
-        opacity: 1;
-        transform: scale(1.1);
-      }
-
-      &:focus::-webkit-calendar-picker-indicator {
-        filter: invert(52%) sepia(73%) saturate(680%) hue-rotate(358deg) brightness(95%) contrast(86%);
-      }
-
-      // Para Firefox
-      &::-moz-calendar-picker-indicator {
-        cursor: pointer;
+        display: none;
       }
     }
 
-    // Estilos para el input de número
+    // Estilos para inputs de número
     &[type="number"] {
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {

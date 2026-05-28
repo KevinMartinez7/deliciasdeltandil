@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContactService } from '../../shared/services/contact.service';
+import flatpickr from 'flatpickr';
+import { Spanish } from 'flatpickr/dist/l10n/es';
 
 @Component({
   selector: 'app-contact',
@@ -10,7 +12,9 @@ import { ContactService } from '../../shared/services/contact.service';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent {
+export class ContactComponent implements AfterViewInit {
+  @ViewChild('dateInput') dateInput!: ElementRef;
+  
   contactForm: FormGroup;
   submitted = false;
   successMessage = false;
@@ -30,6 +34,20 @@ export class ContactComponent {
       guestCount: [''],
       message: ['', [Validators.required, Validators.minLength(10)]]
     });
+  }
+
+  ngAfterViewInit() {
+    if (this.dateInput) {
+      flatpickr(this.dateInput.nativeElement, {
+        locale: Spanish,
+        dateFormat: 'd/m/Y',
+        minDate: 'today',
+        monthSelectorType: 'dropdown',
+        onChange: (selectedDates, dateStr) => {
+          this.contactForm.patchValue({ eventDate: dateStr });
+        }
+      });
+    }
   }
 
   get f() {
