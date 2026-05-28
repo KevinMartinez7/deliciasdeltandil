@@ -73,10 +73,6 @@ export class ContactComponent implements AfterViewInit {
         this.contactForm.reset();
         this.submitted = false;
         this.isLoading = false;
-
-        setTimeout(() => {
-          this.successMessage = false;
-        }, 5000);
       },
       error: (error) => {
         console.error('Error al enviar email:', error);
@@ -88,5 +84,9 @@ export class ContactComponent implements AfterViewInit {
         }, 5000);
       }
     });
+  }
+
+  closeSuccessModal() {
+    this.successMessage = false;
   }
 }
