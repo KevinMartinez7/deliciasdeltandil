@@ -1,0 +1,10 @@
+# robots.txt para Delicias del Tandil
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://deliciasdeltandil.vercel.app/sitemap.xml
+
+# Crawl-delay para ser amigable con los bots
+Crawl-delay: 1
