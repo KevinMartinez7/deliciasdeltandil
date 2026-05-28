@@ -1,13 +1,13 @@
 <section class="carousel-section">
   <div class="carousel-container">
-    <button class="carousel-nav carousel-nav-prev" (click)="prev(); stopAutoplay()">
+    <button class="carousel-nav carousel-nav-prev" (click)="prev()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M15 18l-6-6 6-6"/>
       </svg>
     </button>
 
     <div class="carousel-track-container">
-      <div class="carousel-track" [style.transform]="getTransform()">
+      <div class="carousel-track" [class]="getTransitionClass()" [style.transform]="getTransform()">
         <div 
           *ngFor="let item of items" 
           class="carousel-item"
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <button class="carousel-nav carousel-nav-next" (click)="next(); stopAutoplay()">
+    <button class="carousel-nav carousel-nav-next" (click)="next()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M9 18l6-6-6-6"/>
       </svg>
@@ -35,10 +35,10 @@
 
   <div class="carousel-dots">
     <button 
-      *ngFor="let item of items; let i = index"
+      *ngFor="let item of originalItems; let i = index"
       class="carousel-dot"
-      [class.active]="i === currentIndex"
-      (click)="currentIndex = i; stopAutoplay(); apply3DEffect()"
+      [class.active]="i === currentIndex || (i === 0 && currentIndex === originalItems.length)"
+      (click)="currentIndex = i; resetAutoplay(); apply3DEffect()"
     ></button>
   </div>
 </section>

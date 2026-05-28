@@ -28,8 +28,15 @@
 
 .carousel-track {
   display: flex;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
+  
+  &.with-transition {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  &.no-transition {
+    transition: none;
+  }
 }
 
 .carousel-item {

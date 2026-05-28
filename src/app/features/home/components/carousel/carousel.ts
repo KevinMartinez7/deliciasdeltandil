@@ -15,7 +15,7 @@ interface CarouselItem {
   styleUrl: './carousel.scss',
 })
 export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
-  items: CarouselItem[] = [
+  originalItems: CarouselItem[] = [
     {
       image: 'assets/images/eventos/thumbnail (29).jpg',
       title: 'Boda Elegante',
@@ -38,11 +38,15 @@ export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   ];
 
+  items: CarouselItem[] = [];
   currentIndex = 0;
   intervalId: any;
   itemsPerView = 3;
+  isTransitioning = true;
 
   ngOnInit() {
+    // Crear array infinito: agregar primer item al final
+    this.items = [...this.originalItems, this.originalItems[0]];
     this.updateItemsPerView();
     this.startAutoplay();
     window.addEventListener('resize', this.updateItemsPerView.bind(this));
@@ -81,18 +85,58 @@ export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   next() {
-    this.currentIndex = (this.currentIndex + 1) % this.items.length;
+    this.isTransitioning = true;
+    this.currentIndex++;
     this.apply3DEffect();
+    
+    // Si llegamos al item clonado (último), hacer jump invisible al primero
+    if (this.currentIndex === this.originalItems.length) {
+      setTimeout(() => {
+        this.isTransitioning = false;
+        this.currentIndex = 0;
+        this.apply3DEffect();
+        setTimeout(() => {
+          this.isTransitioning = true;
+        }, 50);
+      }, 500); // Esperar a que termine la transición
+    }
+    
+    this.resetAutoplay();
   }
 
   prev() {
-    this.currentIndex = this.currentIndex === 0 ? this.items.length - 1 : this.currentIndex - 1;
-    this.apply3DEffect();
+    this.isTransitioning = true;
+    
+    // Si estamos en el primero, saltar al último real (antes del clon)
+    if (this.currentIndex === 0) {
+      this.isTransitioning = false;
+      this.currentIndex = this.originalItems.length;
+      this.apply3DEffect();
+      setTimeout(() => {
+        this.isTransitioning = true;
+        this.currentIndex--;
+        this.apply3DEffect();
+      }, 50);
+    } else {
+      this.currentIndex--;
+      this.apply3DEffect();
+    }
+    
+    this.resetAutoplay();
+  }
+
+  resetAutoplay() {
+    this.stopAutoplay();
+    this.startAutoplay();
   }
 
   getTransform(): string {
     const itemWidth = 100 / this.itemsPerView;
     return `translateX(-${this.currentIndex * itemWidth}%)`;
+  }
+
+  getTransitionClass(): string {
+    return this.isTransitioning ? 'with-transition' : 'no-transition';
   }
 
   handleImageErrors() {

@@ -27,7 +27,7 @@ export class FooterComponent {
     {
       title: 'Servicios',
       links: [
-        { label: 'Catering para Bodas', route: '/servicios' },
+        { label: 'Bodas', route: '/servicios' },
         { label: 'Cumpleaños y Fiestas', route: '/servicios' },
         { label: 'Celebraciones Familiares', route: '/servicios' },
         { label: 'Buffet y Cocktails', route: '/servicios' },
@@ -44,7 +44,7 @@ export class FooterComponent {
         { label: 'Blog', route: '/blog' }
       ]
     },
-    {
+    /* {
       title: 'Recursos',
       links: [
         { label: 'Calculadora de Invitados', route: '/recursos' },
@@ -53,22 +53,22 @@ export class FooterComponent {
         { label: 'Políticas de Servicio', route: '/politicas' },
         { label: 'Términos y Condiciones', route: '/terminos' }
       ]
-    },
+    }, */
     {
       title: 'Contacto',
       links: [
         { label: 'Solicitar Cotización', route: '/contacto' },
-        { label: '+54 9 11 1234-5678', href: 'tel:+5491112345678' },
-        { label: 'contacto@deliciasdeltandil.com', href: 'mailto:contacto@deliciasdeltandil.com' },
+        { label: '+54 9 2494 681600', href: 'tel:+542494681600' },
+        { label: 'deliciasdeltandileventos2@gmail.com', href: 'mailto:deliciasdeltandileventos2@gmail.com' },
         { label: 'Tandil, Buenos Aires', href: '#mapa' }
       ]
     }
   ];
 
   socialLinks = [
-    { name: 'Facebook', icon: 'facebook', url: 'https://facebook.com/deliciasdeltandil' },
+   /*  { name: 'Facebook', icon: 'facebook', url: 'https://facebook.com/deliciasdeltandil' }, */
     { name: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/deliciasdeltandilok/' },
-    { name: 'TikTok', icon: 'tiktok', url: 'https://tiktok.com/@deliciasdeltandil' },
+    { name: 'TikTok', icon: 'tiktok', url: 'https://www.tiktok.com/@deliciasdeltandilok' },
     { name: 'WhatsApp', icon: 'whatsapp', url: 'https://wa.me/5492494681600' }
   ];
 }

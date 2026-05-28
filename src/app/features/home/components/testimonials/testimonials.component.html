@@ -1,23 +1,45 @@
 <section id="testimonios" class="testimonials-section">
-  <div class="testimonials-container">
-    <div class="section-header scroll-reveal">
-      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-    </div>
+  <div class="section-header">
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <p class="section-subtitle">Testimonios reales de personas que confiaron en nosotros</p>
+  </div>
 
-    <div class="testimonials-grid">
-      <div 
-        *ngFor="let testimonial of testimonials; let i = index" 
-        class="testimonial-card scroll-reveal" 
-        [style.animation-delay]="(i * 0.1) + 's'"
-      >
-        <div class="testimonial-rating">
-          <span *ngFor="let star of [1,2,3,4,5]" class="star">★</span>
+  <!-- Primera fila - se mueve hacia la izquierda -->
+  <div class="testimonials-row">
+    <div class="testimonials-track scroll-left">
+      <div *ngFor="let testimonial of firstRowTestimonials" class="testimonial-card">
+        <div class="card-header">
+          <img [src]="testimonial.avatar" [alt]="testimonial.name" class="avatar">
+          <div class="author-info">
+            <div class="author-name">{{ testimonial.name }}</div>
+            <div class="author-role">{{ testimonial.role }}</div>
+          </div>
         </div>
-        <p class="testimonial-content">"{{ testimonial.content }}"</p>
-        <div class="testimonial-author">
-          <div class="author-name">{{ testimonial.name }}</div>
-          <div class="author-role">{{ testimonial.company }}</div>
+        <div class="rating">
+          <span *ngFor="let star of [1,2,3,4,5]" class="star" [class.filled]="star <= testimonial.rating">★</span>
         </div>
+        <p class="testimonial-content">{{ testimonial.content }}</p>
+        <div class="testimonial-date">{{ testimonial.date }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Segunda fila - se mueve hacia la derecha -->
+  <div class="testimonials-row">
+    <div class="testimonials-track scroll-right">
+      <div *ngFor="let testimonial of secondRowTestimonials" class="testimonial-card">
+        <div class="card-header">
+          <img [src]="testimonial.avatar" [alt]="testimonial.name" class="avatar">
+          <div class="author-info">
+            <div class="author-name">{{ testimonial.name }}</div>
+            <div class="author-role">{{ testimonial.role }}</div>
+          </div>
+        </div>
+        <div class="rating">
+          <span *ngFor="let star of [1,2,3,4,5]" class="star" [class.filled]="star <= testimonial.rating">★</span>
+        </div>
+        <p class="testimonial-content">{{ testimonial.content }}</p>
+        <div class="testimonial-date">{{ testimonial.date }}</div>
       </div>
     </div>
   </div>

@@ -8,6 +8,7 @@ interface ServiceDetail {
   description: string;
   features: string[];
   icon: string;
+  image: string;
 }
 
 interface ComplementaryService {
@@ -38,7 +39,8 @@ export class ServicesComponent {
         'Decoración y ambientación',
         'Atención VIP a novios'
       ],
-      icon: '💍'
+      icon: '💍',
+      image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=600&fit=crop&q=80'
     },
     {
       title: 'Cumpleaños y Aniversarios',
@@ -52,7 +54,8 @@ export class ServicesComponent {
         'Animación y entretenimiento',
         'Coordinación total del evento'
       ],
-      icon: '🎂'
+      icon: '🎂',
+      image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop&q=80'
     },
     {
       title: 'Fiestas y Eventos Privados',
@@ -66,7 +69,8 @@ export class ServicesComponent {
         'Sonido e iluminación',
         'Coordinación integral'
       ],
-      icon: '🎉'
+      icon: '🎉',
+      image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=600&fit=crop&q=80'
     }
   ];
 
